@@ -1,0 +1,21 @@
+footer{
+	background-color: #eee;
+}
+
+#email_newsletter{
+	width: 100%;
+}
+
+.act-newsletter{
+	width: 100%; 
+	border: 0; 
+	border-radius:10px
+}
+
+.div-newsletter{
+	width: 300px
+}
+
+#stuck_container{
+	z-index: 10000;
+}

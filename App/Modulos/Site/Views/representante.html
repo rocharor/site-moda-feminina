@@ -1,0 +1,46 @@
+<style>
+.filtro-estado{
+	width: 400px;
+	color:#000;
+}
+.divAux{
+	background-color: #f5f5f5;
+	border-radius: 20px;
+	border: solid 2px #ccc;
+	width: 90%;	
+	text-align: left;
+	padding: 10px
+}
+</style>
+
+<h3>Onde nos encontrar</h3>
+
+<div align="center">
+	<select class="form-control filtro-estado" >
+		<option>Todos</option>
+		<option>São Paulo</option>
+		<option>Rio de Janeiro</option>
+		<option>Minas Gerais</option>
+	</select>
+</div>
+<br />
+<div class='row' style="color:#000; font-family: courrier">
+	
+	{foreach from=$arrDados item=valor}
+		<div class="col-md-4" align="center">
+			<div class='divAux'>
+				<table>
+					<tr>
+						<td><b>Nome:&nbsp;</b></td>
+						<td>{$valor.nome}</td>
+					</tr>					
+					<tr>
+						<td><b>Cidade:&nbsp;</b></td>
+						<td>{$valor.cidade}</td>
+					</tr>					
+				</table>	
+			</div>
+		</div>	
+	{/foreach}		
+</div>
+<script src="{$smarty.const._PUBLIC_}/js/representante.js"></script>

@@ -1,0 +1,29 @@
+<div class='topoAdmin' align="center">
+	<img src="/images/logo2.png" width="8%" />
+	<h1>Shirley Dantas</h1>
+
+	<!-- {if !isset($semMenu)}	 -->
+		<div class='btn-sair'>
+			<button class="btn btn-danger act-deslogar">Sair</button>
+		</div>
+		<div class="hidden-xs" align="center">
+			<ul class="nav nav-tabs">
+			  <li role="presentation" class="{$ativo1}"><a href="/admin/home">Home</a></li>
+			  <li role="presentation" class="{$ativo2}"><a href="/admin/galeria">Galeria</a></li>
+			  <li role="presentation" class="{$ativo3}"><a href="/admin/representante">Representantes</a></li>
+			</ul>
+		</div>
+		<div class="dropdown menu-mobile hidden-sm hidden-md hidden-lg">
+			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				<span class="glyphicon glyphicon-menu-hamburger"></span>
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+				<li><a href="/home">Home</a></li>
+				<li><a href="/galeria">Galeria</a></li>
+				<li><a href="/representante">Representantes</a></li>
+			</ul>
+		</div>
+	<!-- {/if} -->
+</div>
+
+<script src="/js/admin/loginAdm.js"></script>

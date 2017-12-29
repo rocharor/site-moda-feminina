@@ -1,0 +1,4 @@
+/vendor
+/Public/images/galeria/*
+!sample.jpg
+*.ini

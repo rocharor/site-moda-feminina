@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="icon" href="images/logo.jpg" type="image/x-icon">
+
+	<title>Shirley Dantas</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/site.css">
+	<script src="libs/jquery/jquery.js"></script>
+
+</head>
+<body>
+	{% include 'topo.html' %}
+
+	<main  style="background-color: #eee">
+		{% block content %}{% endblock %}		
+	</main>
+
+	{% include 'rodape.html' %}
+
+	<script src='js/device.min.js'></script>
+	<script src="js/tmstickup.js"></script>
+	<script src="js/jquery.rd-parallax.js"></script>
+	<script src="js/padrao.js"></script>
+	<script src="js/site.js"></script>
+	<script src="libs/notify/notify.js"></script>
+</body>
+
+<script>
+	// var url = "{$smarty.const._PUBLIC_}";
+</script>
+
+</html>

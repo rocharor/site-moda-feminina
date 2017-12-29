@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="icon" href="/images/logo.jpg" type="image/x-icon">
+
+
+		<link rel="stylesheet" href="/libs/bootstrap/css/bootstrap.css" >
+		<link rel="stylesheet" href="/css/admin.css" />
+
+		<script src="/libs/jquery/jquery.js"></script>
+		<script src="/libs/bootstrap/js/bootstrap.js"></script>
+		<script src="/js/padrao.js"></script>
+
+		<title>Administração Shirley Dantas</title>
+
+	</head>
+	<body>
+
+		{% include 'topoAdm.html' %}
+
+		<main  style="background-color: #eee">
+			{% block content %}{% endblock %}
+		</main>
+
+	</body>
+
+</html>

@@ -1,0 +1,151 @@
+{% extends "template_admin.html" %}
+
+{% block content %}
+	<!-- GALERIA -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="panel panel-default panel-table">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col col-xs-6">
+								<h3 class="panel-title"><label>GERÊNCIAR GALERIA</label></h3>
+							</div>
+							<div class="col col-xs-6 text-right">
+								<button type="button" class="btn btn-sm btn-primary btn-create act-abrir-novo">Novo</button>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body">
+
+						{% if msg is not null %}
+							<div class="alert {{ class }} alerta-msg" align="center"><b>{{ msg }}</b></div>
+						{% endif %}
+
+						<table class="table table-striped table-bordered table-list">
+							<thead>
+								<tr>
+									<th>Titulo</th>
+									<th>Categoria</th>
+									<th>Descrição</th>
+									<th style="width: 10%">Foto</th>
+									<th style="width: 7%">Status</th>
+									<th style="width: 10%">Ações</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for valor in arrDados %}
+									<tr>
+										<td>{{ valor.titulo }}</td>
+										<td>{{ valor.categoria }}</td>
+										<td>{{ valor.descricao }}</td>
+										<td>
+											<div class='div-img'>
+												<img src="/images/galeria/{{ valor.nome_foto }}" alt="" width="100%" />
+											</div>
+										</td>
+										<td>
+											{% if valor.status == 1 %}
+												<span class='text-success status'>Ativo</span>
+											{% else %}
+												<span class='text-danger status'>Inativo</span>
+											{% endif %}
+										</td>
+										<td>
+											<button class='btn btn-primary act-abrir-editar' data-id="{{ valor.id }}" data-nome-foto="{{ valor.nome_foto }}"><span class='glyphicon glyphicon-pencil'></span></button>
+											<button class='btn btn-danger act-excluir-galeria' data-id="{{ valor.id }}" data-nome-foto="{{ valor.nome_foto }}"><span class='glyphicon glyphicon-remove'></span></button>
+										</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+					<div class="panel-footer">
+						<div class="row">
+							<div class="col col-xs-4">Página {{ pg }} de {{ totalPg }}</div>
+							<div class="col col-xs-8">
+								<ul class="pagination hidden-xs pull-right">
+									{% for i in 1..totalPg %}
+										{% if pg == i %}
+											<li class='active'><a href="/admin/galeria/{{ i }}">{{ i }}</a></li>
+										{% else %}
+											<li><a href="/admin/galeria/{$i}">{{ i }}</a></li>
+										{% endif %}
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- MODAL NOVO -->
+	<div class="modal fade" id='modal_nova_galeria'>
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <form action="/admin/galeria/create" method="post" name="form-novo" enctype="multipart/form-data">
+		            <div class="modal-header" style="background-color: #eee">
+		            	<label>Editar Conteúdo</label>
+		                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		            </div>
+		            <div class="modal-body">
+		            	<div class="img-carregando hide" align="center"><img src="/images/carregando.gif" /></div>
+		            	<p><input type="text" class="form-control" name="titulo_c" placeholder='Titulo' required="required" /></p>
+		            	<p><input type="text" class="form-control" name="categoria_c" placeholder="Categoria" required="required" /></p>
+		            	<p><textarea class="form-control" rows="10" name="descricao_c" placeholder="Descrição" ></textarea></p>
+		            	<p><input type="file" name="imagem_c" id="imagem_c" class="form-control" required="required" /></p>
+		            	<p><small class="texto_tamanho text-danger">Tamanho máximo permitido 3M.</small></p>
+		            	<div class='div-img img-nova hide'>
+		            		<img src="" class="modelo_nova" alt="" width="100%" />
+		            	</div>
+					</div>
+		            <div class="modal-footer" style="background-color: #eee" >
+		                <button type="submit" class="btn btn-success btn_salvar" name='btn_salvar' value="1">Salvar e Publicar</button>
+		                <button type="submit" class="btn btn-warning btn_salvar" name='btn_salvar' value="0">Salvar e Não Publicar</button>
+		                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+		            </div>
+	            </form>
+	        </div>
+	    </div>
+	</div>
+
+	<!-- MODAL EDITAR -->
+	<div class="modal fade" id='modal_editar_galeria'>
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <form action="/admin/galeria/update" method="post" name="form-editar" enctype="multipart/form-data">
+		            <div class="modal-header" style="background-color: #eee">
+		            	<label>Editar Conteúdo</label>
+		                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		            </div>
+		            <div class="modal-body">
+		            	<div class="img-carregando hide" align="center"><img src="/images/carregando.gif" /></div>
+		            	<p><input type="text" class="form-control" name="tituloE" placeholder='Titulo' required="required" /></p>
+		            	<p><input type="text" class="form-control" name="categoriaE" placeholder="Categoria" required="required" /></p>
+		            	<p><textarea class="form-control" rows="10" name="descricaoE" placeholder="Descrição"></textarea></p>
+		            	<p><input type="file" class="form-control" name="imagemE" id="imagemE" /></p>
+		            	<p><small class="texto_tamanho"></small></p>
+		            	<div class='div-img img-editar1'>
+							<img src="" class='modelo_editar1' alt="" width="100%" />
+						</div>
+						<div class='div-img img-editar2 hide'>
+							<img src="" class='modelo_editar2' alt="" width="100%" />
+						</div>
+						<input type="hidden" name="id" value='' />
+						<input type="hidden" name="foto_antiga" value='' />
+					</div>
+		            <div class="modal-footer" style="background-color: #eee" >
+		                <button type="submit" class="btn btn-success btn_salvar" name='btn_salvar_editar' value="1">Salvar e Publicar</button>
+		                <button type="submit" class="btn btn-warning btn_salvar" name='btn_salvar_editar' value="0">Salvar e Não Publicar</button>
+		                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+		            </div>
+	            </form>
+	        </div>
+	    </div>
+	</div>
+
+	<script src="/js/admin/galeriaAdm.js"></script>
+{% endblock %}

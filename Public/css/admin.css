@@ -1,0 +1,33 @@
+main{
+	margin-top: 20px;
+}
+
+/*
+GALERIA
+*/
+.div-img{
+	border:solid 0px;
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+}
+
+/*
+TOPO
+*/
+.topoAdmin{
+	background-color: #eee;
+}
+.topoAdmin > div > ul{
+	width: 50%
+}
+.topoAdmin > div > ul > li{
+	padding-left: 8%;
+}
+
+.btn-sair{
+	position: absolute;
+	top:50px;
+	right: 50px
+}
+

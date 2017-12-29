@@ -1,0 +1,30 @@
+{% extends "template_site.html" %}
+
+{% block content %}
+	<link href="libs/galereya-latest/dist/css/jquery.galereya.css" rel="stylesheet" />
+
+	<section class="">
+		<h3>Galeria de fotos</h3>
+		<div id="galleryherepls">
+
+			{% for imagem in arrFotos %}
+			     <img src="images/galeria/{{ imagem.nome_foto }}"
+			          alt="Shirley Dantas {{ imagem.categoria }}"
+			          title="{{ imagem.titulo }}"
+			          data-desc="{{ imagem.descricao }}"
+			          data-category="{{ imagem.categoria }}"
+			          data-fullsrc="images/galeria/{{ imagem.nome_foto }}"
+			     />
+			{% endfor %}
+
+		</div>
+	</section>
+
+	<script src="libs/galereya-latest/dist/js/jquery.galereya.min.js"></script>
+	<script>
+	    $(function() {
+	        $('#galleryherepls').galereya();
+	    });
+	</script>
+
+{% endblock %}
