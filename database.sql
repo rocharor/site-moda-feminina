@@ -18,6 +18,9 @@
 --
 -- Table structure for table `emails`
 --
+CREATE DATABASE shirley_dantas;
+
+USE shirley_dantas;
 
 DROP TABLE IF EXISTS `emails`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;

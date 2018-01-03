@@ -51,7 +51,7 @@ class Home extends Controller
             'msgTopo'=>$dados[0]['texto'],
             'texto'=>$texto
         ];
-        
+
         $this->view('index', $variaveis);
     }
 
